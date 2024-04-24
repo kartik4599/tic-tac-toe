@@ -18,7 +18,7 @@ function App() {
           type="number"
           style={{
             margin: "0 10px",
-            width: "25px",
+            width: "35px",
             padding: "10px",
             paddingLeft: "25px",
             borderRadius: "5px",
