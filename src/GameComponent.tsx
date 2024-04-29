@@ -3,14 +3,20 @@ import { useEffect, useState } from "react";
 const Box = ({
   value,
   clickEvent,
+  count,
+  currentCurrentCount,
 }: {
   value: boolean | null;
   clickEvent: () => void;
+  currentCurrentCount: number;
+  count: number;
 }) => {
   return (
     <div
       onClick={clickEvent}
       style={{
+        transition: " all 1s ease-out",
+        transform: currentCurrentCount === count ? "scale(1.15)" : "",
         border: value
           ? "2px solid green"
           : value === false
@@ -148,10 +154,12 @@ const GameComponent = ({
           gridTemplateColumns: gridTemplateColumns.join(" "),
         }}
       >
-        {matrix.map(({ value, x, y }, index) => (
+        {matrix.map(({ value, x, y, count: ct }, index) => (
           <Box
             key={index}
             value={value}
+            count={ct}
+            currentCurrentCount={count}
             clickEvent={clickEvent.bind(null, x, y)}
           />
         ))}
